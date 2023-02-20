@@ -1,0 +1,40 @@
+name: "Zimagi Commmand API Executer"
+description: "GitHub Action for executing API based Zimagi commands"
+inputs:
+  name:
+    description: "Full name of command (ex; module/list)"
+    required: true
+  options:
+    description: "YAML encoded map of command options"
+    required: false
+    default: "{}"
+  user:
+    description: "Zimagi user name"
+    required: false
+    default: "admin"
+  token:
+    description: "Zimagi user token"
+    required: true
+  encryption_key:
+    description: "Zimagi user encryption key"
+    required: false
+    default: ""
+  host:
+    description: "Zimagi Command API host"
+    required: false
+    default: "127.0.0.1"
+  port:
+    description: "Zimagi Command API porty"
+    required: false
+    default: "5123"
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - "--name=${{ inputs.name }}"
+    - '--options=${{ inputs.options }}'
+    - "--user=${{ inputs.user }}"
+    - "--token=${{ inputs.token }}"
+    - "--encryption-key=${{ inputs.encryption_key }}"
+    - "--host=${{ inputs.host }}"
+    - "--port=${{ inputs.port }}"
