@@ -1,4 +1,4 @@
-name: "Zimagi Commmand API Executer"
+name: "Zimagi Commmand API Executor"
 description: "GitHub Action for executing API based Zimagi commands"
 inputs:
   name:
