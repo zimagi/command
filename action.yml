@@ -24,7 +24,7 @@ inputs:
     required: false
     default: "127.0.0.1"
   port:
-    description: "Zimagi Command API porty"
+    description: "Zimagi Command API port"
     required: false
     default: "5123"
 runs:
