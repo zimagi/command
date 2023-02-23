@@ -3,7 +3,7 @@ version: '3.8'
 services:
   action:
     network_mode: host
-    image: zimagi-action-command
+    image: zimagi/command
     build:
       context: .
       dockerfile: Dockerfile

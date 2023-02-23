@@ -5,7 +5,7 @@ set -e
 cd "$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 
 VERSION="${1}"
-PKG_DOCKER_IMAGE="zimagi/action-command"
+PKG_DOCKER_IMAGE="zimagi/command"
 #-------------------------------------------------------------------------------
 
 if [ -z "$VERSION" ]; then
