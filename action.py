@@ -6,6 +6,18 @@ import zimagi
 import os
 #-------------------------------------------------------------------------------
 
+# host (env - ZIMAGI_HOST)
+# port (env - ZIMAGI_PORT)
+# user (env - ZIMAGI_USER)
+# token (env - ZIMAGI_TOKEN)
+# encryption_key (env - ZIMAGI_ENCRYPTION_KEY)
+# name
+# options
+
+
+class ActionError(Exception):
+    pass
+
 
 class Action(object):
 
@@ -42,14 +54,14 @@ class Action(object):
 
 @click.command()
 # REQUIRED
-@click.option("-n", "--name", type = str, required = True)
-@click.option("-t", "--token", type = str, required = True)
+@click.option('-n', '--name', type = str, required = True)
+@click.option('-t', '--token', type = str, default = os.environ.get('ZIMAGI_TOKEN', ''))
 # OPTIONAL
-@click.option("-o", "--options", type = str, default = '{}')
-@click.option("-u", "--user", type = str, default = "admin")
-@click.option("-k", "--encryption-key", type = str, default = "")
-@click.option("-h", "--host", type = str, default = "localhost")
-@click.option("-p", "--port", type = int, default = 5123)
+@click.option('-o', '--options', type = str, default = '{}')
+@click.option('-u', '--user', type = str, default = os.environ.get('ZIMAGI_USER', 'admin'))
+@click.option('-k', '--encryption-key', type = str, default = os.environ.get('ZIMAGI_ENCRYPTION_KEY', ''))
+@click.option('-h', '--host', type = str, default = os.environ.get('ZIMAGI_HOST', 'localhost'))
+@click.option('-p', '--port', type = int, default = int(os.environ.get('ZIMAGI_PORT', 5123)))
 def main(
     name,
     token,
@@ -59,6 +71,9 @@ def main(
     host,
     port
 ):
+    if not token:
+        raise ActionError("To execute Zimagi commands either --token argument or ZIMAGI_TOKEN environment variable must be set")
+
     action = Action(host, port, user, token, encryption_key)
     action.exec(
         name,
@@ -66,5 +81,5 @@ def main(
     )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
