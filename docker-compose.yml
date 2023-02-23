@@ -3,19 +3,22 @@ version: '3.8'
 services:
   action:
     network_mode: host
+
     image: zimagi/command
     build:
       context: .
       dockerfile: Dockerfile
-    environment: {}
-    env_file:
-      - .env
+
+    env_file: .env
+    environment:
+      ZIMAGI_HOST: 127.0.0.1
+      ZIMAGI_PORT: 5123
+      ZIMAGI_USER: admin
+      ZIMAGI_TOKEN: uy5c8xiahf93j2pl8s00e6nb32h87dn3
+
     volumes:
       - ./action.py:/usr/local/bin/zimagi-action
+
     command:
-      - "--host=127.0.0.1"
-      - "--port=5123"
-      - "--user=admin"
-      - "--token=uy5c8xiahf93j2pl8s00e6nb32h87dn3"
       - "--name=module/get"
       - '--options={"module_key": "core"}'
