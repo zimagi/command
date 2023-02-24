@@ -15,6 +15,7 @@ services:
       ZIMAGI_PORT: 5123
       ZIMAGI_USER: admin
       ZIMAGI_TOKEN: uy5c8xiahf93j2pl8s00e6nb32h87dn3
+      ZIMAGI_LOG_LEVEL: DEBUG
 
     volumes:
       - ./action.py:/usr/local/bin/zimagi-action
