@@ -11,15 +11,21 @@ services:
 
     env_file: .env
     environment:
-      ZIMAGI_HOST: 127.0.0.1
-      ZIMAGI_PORT: 5123
+      ZIMAGI_HOST: cmd.econradar.com
+      ZIMAGI_PORT: 443
       ZIMAGI_USER: admin
       ZIMAGI_TOKEN: uy5c8xiahf93j2pl8s00e6nb32h87dn3
       ZIMAGI_LOG_LEVEL: DEBUG
 
     volumes:
-      - ./action.py:/usr/local/bin/zimagi-action
+      - ./lib:/usr/local/lib/action
 
     command:
-      - "--name=module/get"
-      - '--options={"module_key": "core"}'
+      - "--name=module/add"
+      - '--options={
+          "module_provider_name": "github",
+          "remote": "econradar/zimagi-publisher",
+          "module_fields": {
+            "reference": "main"
+          }
+        }'
