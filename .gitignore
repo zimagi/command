@@ -18,6 +18,9 @@ __pycache__
 /lib/zimagi
 /lib/requirements.txt
 
+# Docker Compose definitions
+docker-compose.*.yml
+
 # Configuration
 .env
 
