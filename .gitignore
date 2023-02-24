@@ -14,6 +14,10 @@
 # Python files
 __pycache__
 
+# Client testing
+/lib/zimagi
+/lib/requirements.txt
+
 # Configuration
 .env
 
