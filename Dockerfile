@@ -1,6 +1,6 @@
 #
 #====================================================================
-# GitHub Action Docker image
+# Zimagi Action Docker image
 #
 #
 # Base image

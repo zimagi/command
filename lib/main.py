@@ -6,14 +6,15 @@ import zimagi
 import os
 #-------------------------------------------------------------------------------
 
-# host (env - ZIMAGI_HOST)
-# port (env - ZIMAGI_PORT)
-# user (env - ZIMAGI_USER)
-# token (env - ZIMAGI_TOKEN)
-# encryption_key (env - ZIMAGI_ENCRYPTION_KEY)
-# log_level (env - ZIMAGI_LOG_LEVEL)
-# name
-# options
+# command_path         (required)
+# command_options_yaml (default: {})
+#============================================
+# host           (env: ZIMAGI_HOST)
+# port           (env: ZIMAGI_PORT)
+# user           (env: ZIMAGI_USER)
+# token          (env: ZIMAGI_TOKEN)
+# encryption_key (env: ZIMAGI_ENCRYPTION_KEY)
+# log_level      (env: ZIMAGI_LOG_LEVEL)
 
 
 class ActionError(Exception):
@@ -58,8 +59,8 @@ class Action(object):
         message.display()
 
 
-    def exec(self, name, options):
-        response = self.client.execute(name, **options)
+    def exec(self, command_path, command_options):
+        response = self.client.execute(command_path, **command_options)
         if response.error:
             exit(1)
 
