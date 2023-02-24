@@ -65,21 +65,19 @@ class Action(object):
 
 
 @click.command()
-# REQUIRED
-@click.option('-n', '--name', type = str, required = True)
-@click.option('-t', '--token', type = str, default = os.environ.get('ZIMAGI_TOKEN', ''))
-# OPTIONAL
-@click.option('-o', '--options', type = str, default = '{}')
+@click.argument('command_path', type = str, required = True)
+@click.argument('command_options_yaml', type = str, default = '{}')
 @click.option('-u', '--user', type = str, default = os.environ.get('ZIMAGI_USER', 'admin'))
+@click.option('-t', '--token', type = str, default = os.environ.get('ZIMAGI_TOKEN', ''))
 @click.option('-k', '--encryption-key', type = str, default = os.environ.get('ZIMAGI_ENCRYPTION_KEY', ''))
 @click.option('-h', '--host', type = str, default = os.environ.get('ZIMAGI_HOST', 'localhost'))
 @click.option('-p', '--port', type = int, default = int(os.environ.get('ZIMAGI_PORT', 5123)))
 @click.option('-l', '--log-level', type = str, default = os.environ.get('ZIMAGI_LOG_LEVEL', 'WARNING'))
 def main(
-    name,
-    token,
-    options,
+    command_path,
+    command_options_yaml,
     user,
+    token,
     encryption_key,
     host,
     port,
@@ -90,8 +88,8 @@ def main(
 
     action = Action(host, port, user, token, encryption_key, log_level)
     action.exec(
-        name,
-        yaml.safe_load(options)
+        command_path,
+        yaml.safe_load(command_options_yaml)
     )
 
 

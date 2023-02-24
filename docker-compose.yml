@@ -21,6 +21,6 @@ services:
       - ./lib:/usr/local/lib/action
 
     command:
-      - "--name=module/get"
-      - '--options={"module_key": "core"}'
-
+      - module/get
+      - |
+        module_key: core
