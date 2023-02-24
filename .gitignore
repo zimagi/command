@@ -14,7 +14,7 @@
 # Python files
 __pycache__
 
-# Client testing
+# Client testing (copied from https://github.com/zimagi/zimagi/tree/main/package)
 /lib/zimagi
 /lib/requirements.txt
 
