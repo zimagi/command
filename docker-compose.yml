@@ -11,8 +11,8 @@ services:
 
     env_file: .env
     environment:
-      ZIMAGI_HOST: cmd.econradar.com
-      ZIMAGI_PORT: 443
+      ZIMAGI_HOST: localhost
+      ZIMAGI_PORT: 5123
       ZIMAGI_USER: admin
       ZIMAGI_TOKEN: uy5c8xiahf93j2pl8s00e6nb32h87dn3
       ZIMAGI_LOG_LEVEL: DEBUG
