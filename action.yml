@@ -27,6 +27,10 @@ inputs:
     description: "Zimagi Command API port"
     required: false
     default: "5123"
+  log_level:
+    description: "Zimagi client log level"
+    required: false
+    default: "WARNING"
 runs:
   using: docker
   image: Dockerfile
@@ -38,3 +42,4 @@ runs:
     - "--encryption-key=${{ inputs.encryption_key }}"
     - "--host=${{ inputs.host }}"
     - "--port=${{ inputs.port }}"
+    - "--log-level=${{ inputs.log_level }}"
