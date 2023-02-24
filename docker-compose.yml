@@ -21,11 +21,6 @@ services:
       - ./lib:/usr/local/lib/action
 
     command:
-      - "--name=module/add"
-      - '--options={
-          "module_provider_name": "github",
-          "remote": "econradar/zimagi-publisher",
-          "module_fields": {
-            "reference": "main"
-          }
-        }'
+      - "--name=module/get"
+      - '--options={"module_key": "core"}'
+
